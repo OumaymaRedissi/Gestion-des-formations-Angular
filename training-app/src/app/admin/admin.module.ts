@@ -7,6 +7,7 @@ import { SessionAddFormComponent } from './session-add-form/session-add-form.com
 import { SessionEditFormComponent } from './session-edit-form/session-edit-form.component';
 import { SessionItemComponent } from './session-item/session-item.component';
 import { SessionItemListComponent } from './session-item-list/session-item-list.component';
+import { FakeSessionItemService } from './fake-sessionitem-service.service';
 
 
 @NgModule({
@@ -17,7 +18,7 @@ import { SessionItemListComponent } from './session-item-list/session-item-list.
     BrowserModule,
     FormsModule
   ],
-  providers:[],
+  providers:[FakeSessionItemService],
   bootstrap: [AdminComponent],
 })
 export class AdminModule { }
