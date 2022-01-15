@@ -6,10 +6,11 @@
 <ng-template #notok> Session Complète!</ng-template>
 <div>{{session.participants}} Participants</div>
 <div class="tools">
-<a [appInscriptionDisabled]="session.isCompleted" class="inscrire" (click)="inscrire()">
-Inscription
-</a>
 <a class="partager">
 Partager
 </a>
 <br> 
+<a class="delete" (click)="onDelete()">
+    Suppression
+    </a>
+</div>
