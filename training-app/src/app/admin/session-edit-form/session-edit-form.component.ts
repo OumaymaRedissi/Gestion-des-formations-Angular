@@ -1,18 +1,29 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { FakeSessionItemService } from '../fake-sessionitem-service.service';
 import { Session } from '../session';
-import { NgForm } from '@angular/forms';
+
 @Component({
   selector: 'app-session-edit-form',
   templateUrl: './session-edit-form.component.html',
   styleUrls: ['./session-edit-form.component.css']
 })
 export class SessionEditFormComponent implements OnInit {
-  tracks = ['MEAN', 'Angular','NodeJS', 'Android', 'Swift', 'Xamarin'];
-  session = new Session(1, 'Web', this.tracks[0], new
-  Date('2018-06-11'), 10, 'Lyon', 0, false);
-  constructor() { }
-  ngOnInit() { }
-  editSession(sessionItem: NgForm): void{
-  console.log("Session Updated..."+JSON.stringify(sessionItem.value));
+  id: number = 0;
+  private sub: any;
+  session:any;
+  tracks = ['MEAN', 'Angular',
+  'NodeJS', 'Android', 'Swift', 'Xamarin'];
+  constructor(private route: ActivatedRoute, private sessionItemService: FakeSessionItemService) { }
+  ngOnInit() {
+  this.sub = this.route.params.subscribe(params => {
+  this.id = params['id']; // (+) converts string 'id' to a number
+  });
+  console.log('Session ID ' + this.id.toString());
+  this.session = this.sessionItemService.getSession(this.id);
   }
+  editSession(sessionItem: Session) {
+  console.log(sessionItem);
+  }
+
 }

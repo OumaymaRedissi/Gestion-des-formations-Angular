@@ -9,6 +9,9 @@
 <a class="partager">
 Partager
 </a>
+<a [routerLink]="['../edit', session.id]"routerLinkActive="active" class="inscrire">
+Modification
+</a>
 <br> 
 <a class="delete" (click)="onDelete()">
     Suppression

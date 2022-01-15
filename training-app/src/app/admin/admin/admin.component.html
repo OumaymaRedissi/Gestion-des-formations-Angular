@@ -1,5 +1,14 @@
-<section>
-    <app-session-add-form></app-session-add-form>
-    <app-session-item-list></app-session-item-list>        
-        <app-session-edit-form></app-session-edit-form>
+<nav>
+    <a routerLink="./list" routerLinkActive="active">
+    <img src="assets/list.png" class="icon" />
+    </a>
+    <a routerLink="./add" routerLinkActive="active">
+    <img src="assets/add.png" class="icon" />
+    </a>
+    <a [routerLink]="['./edit', 1]" routerLinkActive="active">
+    <img src="assets/edit.png" class="icon" />
+    </a>
+    </nav>
+    <section>
+    <router-outlet></router-outlet>
 </section>
