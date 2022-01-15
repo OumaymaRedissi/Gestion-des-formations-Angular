@@ -1,25 +1,19 @@
-<!--<h2>{{name}}</h2>
-<div>MEAN Stack</div>
-<div>Prévue du 11/06/2018 au 15/06/2018</div>
-<div>Lyon</div>
-
+<h2>{{session.name}}</h2>
+<div>{{session.track}}</div>
+<div>Prévue le {{session.date | date}} pendant {{session.duree}} jours à {{session.local}}</div>
+<li *ngIf="session.participants < 20 ; then ok else notok"></li>
+<ng-template #ok> Encore {{20 - session.participants }} places sont disponibles!</ng-template>
+<ng-template #notok> Session Complète!</ng-template>
+<div>{{session.participants}} Participants</div>
 <div class="tools">
-
-<a class="delete">Details</a>
-<a class="inscrire">Inscription</a>
-<a class="partager">Partager</a>
-</div>-->
-
-<h2 [textContent]="name"></h2>
-<!--  <h2 textContent="{{name}}"></h2>  -->
-<!--<div align="{{alignement}}">MEAN Stack</div>-->
-<div [align]="alignement" >MEAN Stack</div>
-<div>Prévue du 11/06/2018 au 15/06/2018</div>
-<div>Lyon</div>
-
-<div class="tools">
-
-<a class="delete">Details</a>
-<a class="inscrire">Inscription</a>
-<a class="partager">Partager</a>
+<a [appInscriptionDisabled]="session.isCompleted" class="inscrire" (click)="inscrire()">
+Inscription
+</a>
+<a class="partager">
+Partager
+</a>
+<br> 
+<a class="delete" (click)="onDelete()">
+    Suppression
+    </a>
 </div>
